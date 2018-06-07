@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link href="https://www.highcharts.com/highslide/highslide.css" rel="stylesheet" />
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+        <script type="text/javascript" src="https://code.highcharts.com/highcharts-more.js"></script>
+        <script type="text/javascript" src="https://code.highcharts.com/modules/heatmap.js"></script>
+        <script type="text/javascript" src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script type="text/javascript" src="http://code.highcharts.com/modules/drilldown.js"></script>
+    </head>
+    <body style="margin:0;padding:0">
+                <div id="container" style="width:850px;height:400px;">Loading....</div>
+
+
+    <script>
+        $(function(){
+
+
+
+
+
+            Highcharts.setOptions({"global": {}, "lang": {}});
+            var option = {"chart": {"renderTo": "container", "width": 850, "height": 400, "type": "column"}, "colors": {}, "credits": {"enabled": false}, "drilldown": {}, "exporting": {}, "labels": {}, "legend": {"enabled": false}, "loading": {}, "navigation": {}, "pane": {}, "plotOptions": {"series": {"borderWidth": 0, "dataLabels": {"enabled": true, "format": "{point.y:.1f}%"}}}, "series": {}, "subtitle": {"text": "Click the columns to view breakdown."}, "title": {"text": "WWII Weapon Trends"}, "tooltip": {"headerFormat": "<span style=\"font-size:11px\">{series.name}</span><br>", "pointFormat": "<span style=\"color:{point.color}\">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>"}, "xAxis": {"type": "category"}, "yAxis": {"title": {"text": "Total percent selected by"}}};
+
+
+            var drilldowndata = [{"data": [["m1941", 4], ["type30", 1], ["stg", 4], ["volk", 5], ["gewehr", 3], ["bar", 4], ["itra", 5], ["m1a1", 1]], "type": "column", "name": "Rifle", "id": "Rifle"}, {"data": [["m38", 3], ["mp40", 7], ["ppsh", 3], ["grease", 4], ["sterling", 3], ["orso", 1]], "type": "column", "name": "SMG", "id": "SMG"}, {"data": [["mg81", 10], ["bren", 3], ["mg15", 5], ["lewis", 4]], "type": "column", "name": "LMG", "id": "LMG"}, {"data": [["lee", 11], ["enfield", 4], ["kar", 7], ["type38", 6], ["m1903", 1]], "type": "column", "name": "Sniper", "id": "Sniper"}, {"data": [["toggle", 3], ["combat", 8], ["m30", 4], ["sawed", 1], ["luftwaffe", 1]], "type": "column", "name": "Shotgun", "id": "Shotgun"}, {"data": [["9mm", 4], ["1911", 5], ["machinepistol", 4], ["reich", 1]], "type": "column", "name": "pistol", "id": "pistol"}, {"data": [["baseball", 5], ["shovel", 4], ["panzer", 4], ["bazooka", 6], ["knife", 5]], "type": "column", "name": "other", "id": "other"}];
+            option.drilldown.series = drilldowndata;
+ 
+
+            var chart = new Highcharts.Chart(option);
+
+            var data = [{"data": [{"name": "Rifle", "y": 8, "drilldown": "Rifle"}, {"name": "SMG", "y": 6, "drilldown": "SMG"}, {"name": "LMG", "y": 4, "drilldown": "LMG"}, {"name": "Sniper", "y": 5, "drilldown": "Sniper"}, {"name": "Shotgun", "y": 5, "drilldown": "Shotgun"}, {"name": "pistol", "y": 4, "drilldown": "pistol"}, {"name": "other", "y": 5, "drilldown": "other"}], "type": "column", "name": "Brands", "colorByPoint": true}];
+            var dataLen = data.length;
+            for (var ix = 0; ix < dataLen; ix++) {
+                chart.addSeries(data[ix]);
+            }
+ 
+
+
+
+
+
+
+
+        
+    });
+        </script>
+
+    </body>
+</html>
